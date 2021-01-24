@@ -1,3 +1,24 @@
-.cardPadding {
-    margin: 10px!important;
+#jumbotronStyle {
+    background-color: #596C73;
+    color: #DDC3C1;
 }
+
+.card-footer{
+    padding: 0px!important;
+    
+}
+.footerSize{
+   padding: 10px!important;
+}
+
+.cardWidth{
+    width: 18rem!important;
+    
+}
+
+.columnWid{
+    
+    margin: 10%!important;
+    margin-top: 0px!important;
+}
+

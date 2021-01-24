@@ -10,43 +10,44 @@
     <title>Team Profile</title>
 </head>
 <body>
-    <div id="page-container" >
-        <section class="hero is-small is-bold" id="jumbotronStyle">
-          <div class="hero-body">
-            <div class="container has-text-centered">
-              <h1 class=" display-3">Meet the Team!</h1> 
-            </div>
-          </div>
-        </section>
-        
-        <div class="container columnWid">
-          <div class="section">
-            <div class="row columns is-multiline is-centered">
-      
-              <div class="column is-4 cardWidth">
-                <div class="card cardWidth cardBorder">
-                  <div class="card-content cardHeader">
-                    <p class="title cardHeader">Name</p>
-                    <p class="subtitle cardHeader"><i class="fas fa-mug-hot iconColor"></i>&ensp;Manager</p>
-                  </div>
-                  <div class="card-content">
-                    <footer class="cardBorderLight">
-                      <p class="card-content footerSize">ID: </p>
-                    </footer>
-                    <footer class="cardBorderDark">
-                      <p class="card-content footerSize">Email: </p>
-                    </footer>
-                    <footer class="cardBorderLight">
-                      <p class="card-content footerSize">Office Number: </p>
-                    </footer>
-                  </div>
-                </div>
-              </div>
-      
-      
-            </div>
-          </div>  
+  <div id="page-container">
+
+    <section class="hero is-small is-bold" id="jumbotronStyle">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="display-3">Meet the Team!</h1> 
         </div>
       </div>
+    </section>
+
+    <div class="container columnWid">
+      <div class="section">
+        <div class="row columns is-multiline is-centered">
+  
+          <div class="column is-4 cardWidth">
+            <div class="card cardWidth cardBorder">
+              <div class="card-content cardHeader">
+                <p class="title cardHeader">${name}</p>
+                <p class="subtitle cardHeader"><i class="fas fa-mug-hot iconColor"></i>&ensp; ${title}</p>
+              </div>
+              <div class="card-content">
+                <footer class="cardBorderLight">
+                  <p class="card-content footerSize">ID: ${id}</p>
+                </footer>
+                <footer class="cardBorderDark">
+                  <p class="card-content footerSize">Email: ${email}</p>
+                </footer>
+                <footer class="cardBorderLight">
+                  <p class="card-content footerSize">Office Number: ${office}</p>
+                </footer>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>  
+    </div>
+
+  </div>
 </body>
 </html>

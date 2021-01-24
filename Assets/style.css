@@ -1,6 +1,39 @@
+html, body{
+    width: 100vw!important;
+    height: 100vh!important; 
+}
+
+#page-container {	    
+    position: relative;	 
+    background-color: #D0D7D1!important; 
+}
+
 #jumbotronStyle {
     background-color: #596C73;
     color: #DDC3C1;
+}
+
+.cardBorder{
+    border-radius: 10px;
+}
+
+.cardHeader{
+    background-color: #596C73;
+    color: #EEDCD8!important;
+}
+
+.iconColor{
+    color: #D0D8DA;
+}
+
+.cardBorderLight{
+    background: #D5DEE6;
+    border-radius: 5px;
+}
+
+.cardBorderDark{
+    background: #BFCDD9;
+    border-radius: 5px;
 }
 
 .card-footer{
@@ -8,7 +41,8 @@
     
 }
 .footerSize{
-   padding: 10px!important;
+    margin: 2px;
+    padding: 10px!important;
 }
 
 .cardWidth{

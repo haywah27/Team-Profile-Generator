@@ -107,7 +107,39 @@ const internQuestions = [
 
 // init();
 
+function init(){
+    inquirer.prompt(teamNameQuestions).then(
+        response => {
+            // console.log(response);
+            const team = response.team;
+            addManager();
+        });
+}
 
+function addManager(){
+    inquirer.prompt(managerQuestions).then(
+        response => {
+            console.log(response);
+            const name = response.name;
+            const role = "Manager";
+            const id = 1;
+            const email = response.email;
+            const office = response.office;
+            const teammate = new Manager(name, id, role, email, office);
+            teamArr.push(teammate);
+            // console.log(teamArr);
+            // addMember();
+        });
+}
+
+function addMember(){
+    inquirer.prompt(addNewMember).then(
+        response => {
+            console.log(response)
+        });
+}
+
+init();
 
 
 // 1. // predefine the 3 classes/constructor functions for the three types of employees : manager, engineer, intern
@@ -130,8 +162,10 @@ function Employee(name, id) {
       console.log(this.role);
   }
 }
-  function Manager(name, id, role) {
+  function Manager(name, id, role, email, office) {
     this.role = role;
+    this.email = email;
+    this.office = office;
     Employee.call(this, name, id);
   }
 

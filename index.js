@@ -2,23 +2,35 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const profile = require("./generateProfile");
 
+let teamArr = [];
 
-const questions = [
+const teamNameQuestions = [
+
     {
         type: "input",
-        message: "What is the employee name?",
-        name: "name",
-      },
-      {
+        message: "What is your teamname?",
+        name: "team"
+    }
+
+];
+
+const addNewMember = [
+
+    {
         type: "list",
-        message: "What best describes their position?",
-        choices: ["Manager", "Engineer", "Intern"],
-        name: "title",
-      },
-      {
+        message: "Would you like to add another team member?",
+        choices: ["Yes, add Engineer.", "Yes, add Intern.", "No more team additions."],
+        name: "newAddition"
+    }
+
+];
+
+const managerQuestions = [
+
+    {
         type: "input",
-        message: "What is their emplooyee ID?",
-        name: "id",
+        message: "What is the employees name?",
+        name: "name",
       },
       {
         type: "input",
@@ -28,32 +40,110 @@ const questions = [
       {
         type: "input",
         message: "What is their office number?",
-        name: "office",
+        name: "office"
+      }
+];
+
+const engineerQuestions = [
+
+    {
+        type: "input",
+        message: "What is the employees name?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is their email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is their GitHub username?",
+        name: "GitHub"
+      }
+];
+
+const internQuestions = [
+    {
+        type: "input",
+        message: "What is the employees name?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is their email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What school did they go to?",
+        name: "school"
       }
 ];
 
 
 
 
-function writeToFile(fileName, data) {
+// function writeToFile(fileName, data) {
     
-    fs.writeFile(fileName, data, err =>
-    err ? console.error(err) : console.log("Success! New README generated!"));
+//     fs.writeFile(fileName, data, err =>
+//     err ? console.error(err) : console.log("Success! New README generated!"));
 
-}
+// }
 
-function init() {
+// function init() {
 
-    inquirer.prompt(questions).then(
-        answers => {
-            console.log(answers);
-            // badge = markdown.renderBadge(answers.license);
-            // badgeLink = markdown.renderLink(answers.license);
-            // licenseSection = markdown.renderSection(answers.license);
+//     inquirer.prompt(questions).then(
+//         answers => {
+//             console.log(answers);
+//             // badge = markdown.renderBadge(answers.license);
+//             // badgeLink = markdown.renderLink(answers.license);
+//             // licenseSection = markdown.renderSection(answers.license);
             
-            writeToFile("index.html", profile.manager(answers.name, answers.title, answers.id, answers.email, answers.office));
-        })
+//             writeToFile("index.html", profile.manager(answers.name, answers.title, answers.id, answers.email, answers.office));
+//         })
     
-}
+// }
 
-init();
+// init();
+
+
+
+
+// 1. // predefine the 3 classes/constructor functions for the three types of employees : manager, engineer, intern
+// 2. get info from the client about each employee to be added
+//    2.1 ask for name and other info of the manager
+//    2.2 ask if client wants to add another employee or exit
+//    3.3 repeat  2.2 until exit;
+// greet and ask for managers name: 
+// build an employee of type manager using a constructor (by passing all the info into the constructor)
+    // generate html with info of the employee (by running build command)
+// ask client if they want to add more interns or enginners or exit 
+// if they want to exit, finish the app
+// if the want to build a new employer, add one to html using the constructor of the apropriate type 
+function Employee(name, id) {
+    this.name = name;
+    this.id = id;
+    this.buildHtml = function buildHtml() {
+      console.log(this.name);
+      console.log(this.id);
+      console.log(this.role);
+  }
+}
+  function Manager(name, id, role) {
+    this.role = role;
+    Employee.call(this, name, id);
+  }
+
+  function Engineer(name, id, role) {
+    this.role = role;
+    Employee.call(this, name, id);
+  }
+
+  function Intern(name, id, role) {
+    this.role = role;
+    Employee.call(this, name, id);
+  }
+
+//   const manager = new Manager('A', 'B', 'C');
+//   manager.buildHtml();

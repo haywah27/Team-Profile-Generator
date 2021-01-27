@@ -19,7 +19,7 @@ const addNewMember = [
     {
         type: "list",
         message: "Would you like to add another team member?",
-        choices: ["Yes, add Engineer.", "Yes, add Intern.", "No more team additions."],
+        choices: ["Yeah, add Engineer.", "Yeah, add Intern.", "No more team additions."],
         name: "newAddition"
     }
 
@@ -29,7 +29,7 @@ const managerQuestions = [
 
     {
         type: "input",
-        message: "What is the employees name?",
+        message: "What is the manager's name?",
         name: "name",
       },
       {
@@ -48,7 +48,7 @@ const engineerQuestions = [
 
     {
         type: "input",
-        message: "What is the employees name?",
+        message: "What is the engineer's name?",
         name: "name",
       },
       {
@@ -59,14 +59,14 @@ const engineerQuestions = [
       {
         type: "input",
         message: "What is their GitHub username?",
-        name: "GitHub"
+        name: "github"
       }
 ];
 
 const internQuestions = [
     {
         type: "input",
-        message: "What is the employees name?",
+        message: "What is the intern's name?",
         name: "name",
       },
       {
@@ -128,14 +128,57 @@ function addManager(){
             const teammate = new Manager(name, id, role, email, office);
             teamArr.push(teammate);
             // console.log(teamArr);
-            // addMember();
+            addMember();
         });
 }
 
 function addMember(){
     inquirer.prompt(addNewMember).then(
         response => {
-            console.log(response)
+            console.log(response);
+            switch (response.newAddition) {
+                case ("Yeah, add Engineer."):
+                    addEngineer();
+                    break;
+                case ("Yeah, add Intern."):
+                    addIntern();
+                    break;
+                case ("No more team additions."):
+                    console.log(teamArr)
+                    break;
+            }
+        });
+}
+
+function addEngineer(){
+    inquirer.prompt(engineerQuestions).then(
+        response => {
+            console.log(response);
+            const name = response.name;
+            const role = "Engineer";
+            const id = teamArr.length + 1;
+            const email = response.email;
+            const github = response.github;
+            const teammate = new Engineer(name, id, role, email, github);
+            teamArr.push(teammate);
+            // console.log(teamArr);
+            addMember();
+        });
+}
+
+function addIntern(){
+    inquirer.prompt(internQuestions).then(
+        response => {
+            console.log(response);
+            const name = response.name;
+            const role = "Intern";
+            const id = teamArr.length + 1;
+            const email = response.email;
+            const school = response.school;
+            const teammate = new Intern(name, id, role, email, school);
+            teamArr.push(teammate);
+            // console.log(teamArr);
+            addMember();
         });
 }
 
@@ -169,13 +212,17 @@ function Employee(name, id) {
     Employee.call(this, name, id);
   }
 
-  function Engineer(name, id, role) {
+  function Engineer(name, id, role, email, github) {
     this.role = role;
+    this.email = email;
+    this.github = github;
     Employee.call(this, name, id);
   }
 
-  function Intern(name, id, role) {
+  function Intern(name, id, role, email, school) {
     this.role = role;
+    this.email = email;
+    this.school = school;
     Employee.call(this, name, id);
   }
 

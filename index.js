@@ -186,62 +186,101 @@ function addIntern(){
 }
 
 function buildHTML(){
-   let htmlContent = `<!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-       <link rel="stylesheet" href="./style.css">
-       <title>Team Profile</title>
-   </head>
-   <body>
-     <div id="page-container">
-   
-       <section class="hero is-small is-bold" id="jumbotronStyle">
-         <div class="hero-body">
-           <div class="container has-text-centered">
-             <h1 class="display-3">${teamArr[0]}</h1> 
-           </div>
-         </div>
-       </section>
-   
-       <div class="container columnWid">
-         <div class="section">
-           <div class="row columns is-multiline is-centered">
-     
-             <div class="column is-4 cardWidth">
-               <div class="card cardWidth cardBorder">
-                 <div class="card-content cardHeader">
-                   <p class="title cardHeader">${teamArr[1].name}</p>
-                   <p class="subtitle cardHeader"><i class="fas fa-mug-hot iconColor"></i>&ensp; ${teamArr[1].role}</p>
-                 </div>
-                 <div class="card-content">
-                   <footer class="cardBorderLight">
-                     <p class="card-content footerSize">ID: ${teamArr[1].id}</p>
-                   </footer>
-                   <footer class="cardBorderDark">
-                     <p class="card-content footerSize">Email: ${teamArr[1].email}</p>
-                   </footer>
-                   <footer class="cardBorderLight">
-                     <p class="card-content footerSize">Office Number: ${teamArr[1].office}</p>
-                   </footer>
-                 </div>
-               </div>
-             </div>
-   
-           </div>
-         </div>  
-       </div>
-   
-     </div>
-   </body>
-   </html>
-  `;
-
+    let pageArr = [];
+    const htmlHeader = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./Assets/style.css">
+        <title>Team Profile</title>
+    </head>
+    <body>
+      <div id="page-container">
     
+        <section class="hero is-small is-bold" id="jumbotronStyle">
+          <div class="hero-body">
+            <div class="container has-text-centered">
+              <h1 class="display-3">${teamArr[0]}</h1> 
+            </div>
+          </div>
+        </section>
+    
+        <div class="container columnWid">
+          <div class="section">
+            <div class="row columns is-multiline is-centered">`
+
+    pageArr.push(htmlHeader);
+
+    for(let i = 1; i < teamArr.length; i++) {
+        let htmlCard = 
+        `<div class="column is-4 cardWidth">
+        <div class="card cardWidth cardBorder">
+            <div class="card-content cardHeader">
+            <p class="title cardHeader">${teamArr[i].name}</p>
+            <p class="subtitle cardHeader"><i class="fas fa-mug-hot iconColor"></i>&ensp; ${teamArr[i].role}</p>
+            </div>
+            <div class="card-content">
+            <footer class="cardBorderLight">
+                <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
+            </footer>
+            <footer class="cardBorderDark">
+                <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+            </footer>`
+
+        if(teamArr[i].role === "Manager"){
+            htmlCard += `
+
+            <footer class="cardBorderLight">
+                <p class="card-content footerSize">Office Number: ${teamArr[i].office}</p>
+            </footer>`
+        }
+
+        if(teamArr[i].role === "Engineer"){
+            htmlCard += `
+
+            <footer class="cardBorderLight">
+                <p class="card-content footerSize">Office Number: ${teamArr[i].github}</p>
+            </footer>`
+        }
+
+        if(teamArr[i].role === "Intern"){
+            htmlCard += `
+
+            <footer class="cardBorderLight">
+                <p class="card-content footerSize">Office Number: ${teamArr[i].school}</p>
+            </footer>`
+        }
+
+        htmlCard += `
+            </div>
+        </div>
+        </div>`
+
+        pageArr.push(htmlCard);
+    };
+      
+              
+
+
+ const htmlBottom = `
+    
+            </div>
+          </div>  
+        </div>
+    
+      </div>
+    </body>
+    </html>`
+    pageArr.push(htmlBottom);
+    // pageArr.join("");
+    // console.log(JSON.stringify(pageArr));
+
+    writeToFile("index.html", pageArr.join(""));
+
 }
 
 init();

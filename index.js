@@ -159,7 +159,7 @@ function addEngineer(){
             console.log(response);
             const name = response.name;
             const role = "Engineer";
-            const id = teamArr.length + 1;
+            const id = teamArr.length;
             const email = response.email;
             const github = response.github;
             const teammate = new Engineer(name, id, role, email, github);
@@ -175,7 +175,7 @@ function addIntern(){
             console.log(response);
             const name = response.name;
             const role = "Intern";
-            const id = teamArr.length + 1;
+            const id = teamArr.length;
             const email = response.email;
             const school = response.school;
             const teammate = new Intern(name, id, role, email, school);
@@ -216,43 +216,58 @@ function buildHTML(){
     pageArr.push(htmlHeader);
 
     for(let i = 1; i < teamArr.length; i++) {
-        let htmlCard = 
-        `<div class="column is-4 cardWidth">
+        let htmlCard = `
+        <div class="column is-4 cardWidth">
         <div class="card cardWidth cardBorder">
             <div class="card-content cardHeader">
-            <p class="title cardHeader">${teamArr[i].name}</p>
-            <p class="subtitle cardHeader"><i class="fas fa-mug-hot iconColor"></i>&ensp; ${teamArr[i].role}</p>
-            </div>
-            <div class="card-content">
-            <footer class="cardBorderLight">
-                <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
-            </footer>
-            <footer class="cardBorderDark">
-                <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
-            </footer>`
+            <p class="title cardHeader">${teamArr[i].name}</p>`;
 
         if(teamArr[i].role === "Manager"){
             htmlCard += `
-
-            <footer class="cardBorderLight">
-                <p class="card-content footerSize">Office Number: ${teamArr[i].office}</p>
-            </footer>`
+                <p class="subtitle cardHeader"><i class="fas fa-mug-hot iconColor"></i>&ensp; ${teamArr[i].role}</p>
+                </div>
+                <div class="card-content">
+                <footer class="cardBorderLight">
+                    <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
+                </footer>
+                <footer class="cardBorderDark">
+                    <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+                </footer>
+                <footer class="cardBorderLight">
+                    <p class="card-content footerSize">Office Number: ${teamArr[i].office}</p>
+                </footer>`
         }
 
         if(teamArr[i].role === "Engineer"){
             htmlCard += `
-
-            <footer class="cardBorderLight">
-                <p class="card-content footerSize">Office Number: ${teamArr[i].github}</p>
-            </footer>`
+                <p class="subtitle cardHeader"><i class="fas fa-glasses iconColor"></i>&ensp; ${teamArr[i].role}</p>
+                </div>
+                <div class="card-content">
+                <footer class="cardBorderLight">
+                    <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
+                </footer>
+                <footer class="cardBorderDark">
+                    <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+                </footer>
+                <footer class="cardBorderLight">
+                    <p class="card-content footerSize">GitHub: ${teamArr[i].github}</p>
+                </footer>`
         }
 
         if(teamArr[i].role === "Intern"){
             htmlCard += `
-
-            <footer class="cardBorderLight">
-                <p class="card-content footerSize">Office Number: ${teamArr[i].school}</p>
-            </footer>`
+                <p class="subtitle cardHeader"><i class="fas fa-user-graduate iconColor"></i>&ensp; ${teamArr[i].role}</p>
+                </div>
+                <div class="card-content">
+                <footer class="cardBorderLight">
+                    <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
+                </footer>
+                <footer class="cardBorderDark">
+                    <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+                </footer>
+                <footer class="cardBorderLight">
+                    <p class="card-content footerSize">School: ${teamArr[i].school}</p>
+                </footer>`
         }
 
         htmlCard += `
@@ -261,6 +276,7 @@ function buildHTML(){
         </div>`
 
         pageArr.push(htmlCard);
+        console.log(teamArr[i].role)
     };
       
               

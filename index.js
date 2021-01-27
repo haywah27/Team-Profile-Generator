@@ -1,6 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const profile = require("./generateProfile");
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 let teamArr = [];
 
@@ -295,62 +299,3 @@ function buildHTML(){
 }
 
 init();
-
-function getName(){
-    return this.name;
-}
-
-function getID(){
-    return this.id;
-}
-
-function getEmail(){
-    return this.email;
-}
-
-function getRole(){
-    return this.role;
-}
-
-function getGithub(){
-    return this.github;
-}
-
-function getSchool(){
-    return this.school;
-}
-
-
-function Employee(name, id, role, email) {
-    this.name = name;
-    this.id = id;
-    this.role = role;
-    this.email = email;
-    getName();
-    getID();
-    getEmail();
-    getRole();  
-}
-
-function Manager(name, id, role, email, office) {
-    this.office = office;
-    getRole(); 
-    Employee.call(this, name, id, role, email);
-}
-
-function Engineer(name, id, role, email, github) {
-    this.github = github;
-    getGithub();
-    getRole(); 
-    Employee.call(this, name, id, role, email);
-}
-
-function Intern(name, id, role, email, school) {
-    this.school = school;
-    getSchool();
-    getRole();
-    Employee.call(this, name, id, role, email);
-}
-
-//   const manager = new Manager('A', 'B', 'C');
-//   manager.buildHtml();

@@ -5,32 +5,32 @@ const profile = require("./generateProfile");
 let teamArr = [];
 
 const teamNameQuestions = [
-
     {
         type: "input",
         message: "What is your teamname?",
         name: "team"
     }
-
 ];
 
 const addNewMember = [
-
     {
         type: "list",
         message: "Would you like to add another team member?",
         choices: ["Yeah, add Engineer.", "Yeah, add Intern.", "No more team additions."],
         name: "newAddition"
     }
-
 ];
 
 const managerQuestions = [
-
     {
         type: "input",
         message: "What is the manager's name?",
         name: "name",
+      },
+      {
+        type: "input",
+        message: "What is their ID number?",
+        name: "id",
       },
       {
         type: "input",
@@ -53,6 +53,11 @@ const engineerQuestions = [
       },
       {
         type: "input",
+        message: "What is their ID number?",
+        name: "id",
+      },
+      {
+        type: "input",
         message: "What is their email?",
         name: "email",
       },
@@ -68,6 +73,11 @@ const internQuestions = [
         type: "input",
         message: "What is the intern's name?",
         name: "name",
+      },
+      {
+        type: "input",
+        message: "What is their ID number?",
+        name: "id",
       },
       {
         type: "input",
@@ -87,25 +97,9 @@ const internQuestions = [
 function writeToFile(fileName, data) {
     
     fs.writeFile(fileName, data, err =>
-    err ? console.error(err) : console.log("Success! New README generated!"));
+    err ? console.error(err) : console.log("Success! New Team Profile generated!"));
 
 }
-
-// function init() {
-
-//     inquirer.prompt(questions).then(
-//         answers => {
-//             console.log(answers);
-//             // badge = markdown.renderBadge(answers.license);
-//             // badgeLink = markdown.renderLink(answers.license);
-//             // licenseSection = markdown.renderSection(answers.license);
-            
-//             writeToFile("index.html", profile.manager(answers.name, answers.title, answers.id, answers.email, answers.office));
-//         })
-    
-// }
-
-// init();
 
 function init(){
     inquirer.prompt(teamNameQuestions).then(
@@ -123,7 +117,7 @@ function addManager(){
             // console.log(response);
             const name = response.name;
             const role = "Manager";
-            const id = 1;
+            const id = response.id;
             const email = response.email;
             const office = response.office;
             const teammate = new Manager(name, id, role, email, office);
@@ -160,7 +154,7 @@ function addEngineer(){
             // console.log(response);
             const name = response.name;
             const role = "Engineer";
-            const id = teamArr.length;
+            const id = response.id;
             const email = response.email;
             const github = response.github;
             const teammate = new Engineer(name, id, role, email, github);
@@ -176,7 +170,7 @@ function addIntern(){
             // console.log(response);
             const name = response.name;
             const role = "Intern";
-            const id = teamArr.length;
+            const id = response.id;
             const email = response.email;
             const school = response.school;
             const teammate = new Intern(name, id, role, email, school);
@@ -327,8 +321,6 @@ function getSchool(){
 }
 
 
-
-
 function Employee(name, id, role, email) {
     this.name = name;
     this.id = id;
@@ -346,19 +338,19 @@ function Manager(name, id, role, email, office) {
     Employee.call(this, name, id, role, email);
 }
 
-  function Engineer(name, id, role, email, github) {
+function Engineer(name, id, role, email, github) {
     this.github = github;
     getGithub();
     getRole(); 
     Employee.call(this, name, id, role, email);
-  }
+}
 
-  function Intern(name, id, role, email, school) {
+function Intern(name, id, role, email, school) {
     this.school = school;
     getSchool();
     getRole();
     Employee.call(this, name, id, role, email);
-  }
+}
 
 //   const manager = new Manager('A', 'B', 'C');
 //   manager.buildHtml();

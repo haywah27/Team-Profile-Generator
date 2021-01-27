@@ -120,7 +120,7 @@ function init(){
 function addManager(){
     inquirer.prompt(managerQuestions).then(
         response => {
-            console.log(response);
+            // console.log(response);
             const name = response.name;
             const role = "Manager";
             const id = 1;
@@ -128,7 +128,8 @@ function addManager(){
             const office = response.office;
             const teammate = new Manager(name, id, role, email, office);
             teamArr.push(teammate);
-            // console.log(teamArr);
+            console.log(teamArr);
+
             addMember();
         });
 }
@@ -145,8 +146,8 @@ function addMember(){
                     addIntern();
                     break;
                 case ("No more team additions."):
-                    console.log(teamArr);
-                    console.log("new page");
+                    // console.log(teamArr);
+                    // console.log("new page");
                     buildHTML();
                     break;
             }
@@ -156,7 +157,7 @@ function addMember(){
 function addEngineer(){
     inquirer.prompt(engineerQuestions).then(
         response => {
-            console.log(response);
+            // console.log(response);
             const name = response.name;
             const role = "Engineer";
             const id = teamArr.length;
@@ -172,7 +173,7 @@ function addEngineer(){
 function addIntern(){
     inquirer.prompt(internQuestions).then(
         response => {
-            console.log(response);
+            // console.log(response);
             const name = response.name;
             const role = "Intern";
             const id = teamArr.length;
@@ -276,7 +277,7 @@ function buildHTML(){
         </div>`
 
         pageArr.push(htmlCard);
-        console.log(teamArr[i].role)
+        // console.log(teamArr[i].role)
     };
       
               
@@ -301,38 +302,62 @@ function buildHTML(){
 
 init();
 
-
-
-function Employee(name, id) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
+function getName(){
+    return this.name;
 }
-  function Manager(name, id, role, email, office) {
+
+function getID(){
+    return this.id;
+}
+
+function getEmail(){
+    return this.email;
+}
+
+function getRole(){
+    return this.role;
+}
+
+function getGithub(){
+    return this.github;
+}
+
+function getSchool(){
+    return this.school;
+}
+
+
+
+
+function Employee(name, id, role, email) {
     this.name = name;
     this.id = id;
     this.role = role;
     this.email = email;
+    getName();
+    getID();
+    getEmail();
+    getRole();  
+}
+
+function Manager(name, id, role, email, office) {
     this.office = office;
-    Employee.call(this, name, id);
-  }
+    getRole(); 
+    Employee.call(this, name, id, role, email);
+}
 
   function Engineer(name, id, role, email, github) {
-    this.name = name;
-    this.id = id;
-    this.role = role;
-    this.email = email;
     this.github = github;
-    Employee.call(this, name, id);
+    getGithub();
+    getRole(); 
+    Employee.call(this, name, id, role, email);
   }
 
   function Intern(name, id, role, email, school) {
-    this.name = name;
-    this.id = id;
-    this.role = role;
-    this.email = email;
     this.school = school;
-    Employee.call(this, name, id);
+    getSchool();
+    getRole();
+    Employee.call(this, name, id, role, email);
   }
 
 //   const manager = new Manager('A', 'B', 'C');

@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+// const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -116,11 +117,11 @@ function addManager(){
         response => {
             // console.log(response);
             const name = response.name;
-            const role = "Manager";
+            // const role = "Manager";
             const id = response.id;
             const email = response.email;
             const office = response.office;
-            const teammate = new Manager(name, id, role, email, office);
+            const teammate = new Manager(name, id, email, office);
             teamArr.push(teammate);
             console.log(teamArr);
 
@@ -153,11 +154,11 @@ function addEngineer(){
         response => {
             // console.log(response);
             const name = response.name;
-            const role = "Engineer";
+            // const role = "Engineer";
             const id = response.id;
             const email = response.email;
             const github = response.github;
-            const teammate = new Engineer(name, id, role, email, github);
+            const teammate = new Engineer(name, id, email, github);
             teamArr.push(teammate);
             // console.log(teamArr);
             addMember();
@@ -169,11 +170,11 @@ function addIntern(){
         response => {
             // console.log(response);
             const name = response.name;
-            const role = "Intern";
+            // const role = "Intern";
             const id = response.id;
             const email = response.email;
             const school = response.school;
-            const teammate = new Intern(name, id, role, email, school);
+            const teammate = new Intern(name, id, email, school);
             teamArr.push(teammate);
             // console.log(teamArr);
             addMember();

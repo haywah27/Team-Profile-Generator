@@ -1,7 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const profile = require("./generateProfile");
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -94,8 +92,6 @@ const internQuestions = [
         name: "school"
       }
 ];
-
-
 
 
 function writeToFile(fileName, data) {
@@ -278,10 +274,7 @@ function buildHTML(){
         // console.log(teamArr[i].role)
     };
       
-              
-
-
- const htmlBottom = `
+    const htmlBottom = `
     
             </div>
           </div>  

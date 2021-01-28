@@ -44,7 +44,7 @@ test("Get email of manager from getName function", () => {
 });
 
 test("Get role of manager from getRole function", () => {
-    const testRole = "Manager"
+    const testRole = "Employee"
     const emp = new Manager("Hayley", 2727, "testemail@gmail.com");
     expect(emp.getRole()).toBe(testRole);
 });

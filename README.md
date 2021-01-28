@@ -11,7 +11,7 @@ Watch this [tutorial video](https://drive.google.com/file/d/14TxCwkL7nQv4S4g3CKi
 ## Tests
 After installing jest (npm i jest) use the command "npm run test" to envoke 4 test suites consisting of 31 jest tests. All 31 currently pass.
 
-<img src="./Assets/npmTest.gif" alt="npmTest">
+<img src="./Assets/jestTest.gif" alt="npmTest">
 
 ## Example Outputs
 Sample 1: 

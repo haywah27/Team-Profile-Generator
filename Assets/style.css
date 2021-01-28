@@ -8,7 +8,7 @@ html, body{
     position: relative;	 
     background-color: #D0D7D1!important; 
     width: 100vw!important;
-    height: 100vh!important; 
+    min-height: 100%!important; 
 }
 
 #jumbotronStyle {

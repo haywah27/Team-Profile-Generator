@@ -13,7 +13,7 @@ Behind the scenes, there are multiple suites of jest unit tests for each employe
 * Navigate to generated html file with the name "index.html" and open in browser to see new team profile.
 
 ## Walkthrough
-Watch this [tutorial video](https://drive.google.com/file/d/14TxCwkL7nQv4S4g3CKincyOW3zHf_vHU/view) for a deep look at how to develop a new team profile page.
+Watch this [tutorial video](https://drive.google.com/file/d/1i69ZoiULqPkucTAYvZfBTAe6vN_FEch9/view) for a deep look at how to develop a new team profile page as well as a demonstration of a command line invocation of Jest tests.
 
 ## Tests
 Use the command "npm run test" to envoke 4 test suites consisting of 31 jest tests. All 31 currently pass. (*if you have not installed dependencies, do so with "npm i jest" in the command line*)

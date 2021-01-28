@@ -123,7 +123,7 @@ function addManager(){
             const office = response.office;
             const teammate = new Manager(name, id, email, office);
             teamArr.push(teammate);
-            console.log(teamArr);
+            // console.log(teamArr);
 
             addMember();
         });
@@ -227,7 +227,7 @@ function buildHTML(){
                     <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
                 </footer>
                 <footer class="cardBorderDark">
-                    <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+                    <p class="card-content footerSize">Email: <a href="mailto:${teamArr[i].email}">${teamArr[i].email}</a></p>
                 </footer>
                 <footer class="cardBorderLight">
                     <p class="card-content footerSize">Office Number: ${teamArr[i].office}</p>
@@ -243,10 +243,11 @@ function buildHTML(){
                     <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
                 </footer>
                 <footer class="cardBorderDark">
-                    <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+                    <p class="card-content footerSize">Email: <a href="mailto:${teamArr[i].email}">${teamArr[i].email}</a></p>
                 </footer>
                 <footer class="cardBorderLight">
-                    <p class="card-content footerSize">GitHub: ${teamArr[i].github}</p>
+                    <p class="card-content footerSize">GitHub: <a href="https://github.com/${teamArr[i].github}" target="_blank">${teamArr[i].github}</a></p>
+                    
                 </footer>`
         }
 
@@ -259,7 +260,7 @@ function buildHTML(){
                     <p class="card-content footerSize">ID: ${teamArr[i].id}</p>
                 </footer>
                 <footer class="cardBorderDark">
-                    <p class="card-content footerSize">Email: ${teamArr[i].email}</p>
+                    <p class="card-content footerSize">Email: <a href="mailto:${teamArr[i].email}">${teamArr[i].email}</a></p>
                 </footer>
                 <footer class="cardBorderLight">
                     <p class="card-content footerSize">School: ${teamArr[i].school}</p>

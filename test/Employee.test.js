@@ -1,6 +1,3 @@
-const { assertExportNamedDeclaration } = require("@babel/types");
-const { test } = require("@jest/globals");
-const { getMaxListeners } = require("process");
 const Employee = require("../lib/Employee");
 
 test("Set name of employee", () => {

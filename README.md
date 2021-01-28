@@ -5,11 +5,18 @@ This is a Node.js command-line application that takes in information (from a use
 
 Behind the scenes, there are multiple suites of jest unit tests for each employee function to demonstrate code maintenance.
 
+## Usage
+### Using the integrated terminal do the following to set up and initiate program:
+* Open an integrated terminal on index.js
+* Install Jest and Inquire packages with the command "npm i"
+* To run program, input “node index.js” and follow the prompt messages. 
+* Navigate to generated html file with the name "index.html" and open in browser to see new team profile.
+
 ## Walkthrough
 Watch this [tutorial video](https://drive.google.com/file/d/14TxCwkL7nQv4S4g3CKincyOW3zHf_vHU/view) for a deep look at how to develop a new team profile page.
 
 ## Tests
-After installing jest (npm i jest) use the command "npm run test" to envoke 4 test suites consisting of 31 jest tests. All 31 currently pass.
+Use the command "npm run test" to envoke 4 test suites consisting of 31 jest tests. All 31 currently pass. (*if you have not installed dependencies, do so with "npm i jest" in the command line*)
 
 <img src="./Assets/jestTest.gif" alt="npmTest">
 
